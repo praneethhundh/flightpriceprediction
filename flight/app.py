@@ -9,7 +9,8 @@ if not os.path.exists("model.pkl"):
     train_model()
 
 # ✅ Load model
-model = pickle.load(open("model.pkl", "rb"))
+with open("model.pkl", "rb") as f:
+    model = pickle.load(f)
 
 st.title("✈️ Flight Price Prediction")
 
