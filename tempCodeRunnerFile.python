@@ -1,0 +1,15 @@
+# training_model.py
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
+import pickle
+
+df = pd.read_csv("flight_price_dataset.csv")
+X = df[['Passenger_Traffic', 'No_of_Flights', 'No_of_Seats', 'No_of_Bookings']]
+y = df['Flight_Price']
+
+model = RandomForestRegressor(n_estimators=100, random_state=42)
+model.fit(X, y)
+
+# Save model
+with open("model.pkl", "wb") as f:
+    pickle.dump(model, f)
